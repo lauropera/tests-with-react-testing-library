@@ -4,7 +4,7 @@ import renderWithRouter from './helpers/renderWithRouter';
 import FavoritePokemons from '../pages/FavoritePokemons';
 import data from '../data';
 
-describe('Checking the fav pokémons page', () => {
+describe('Checking the fav pokémons page content', () => {
   it('Expects to render "No favorite pokemon found" when has 0 favorites', () => {
     render(<FavoritePokemons pokemons={ [] } />);
 
