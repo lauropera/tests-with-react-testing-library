@@ -4,8 +4,6 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from './helpers/renderWithRouter';
 import App from '../App';
 
-// const getPkmnName = () => screen.getByTestId('pokemon-name').textContent;
-
 describe('Pokemon card render', () => {
   it('Checks if the name is rendered', () => {
     renderWithRouter(<App />);
@@ -77,10 +75,12 @@ describe('Pokemon card render', () => {
 
     userEvent.click(detailsLink);
 
-    const addToFavBtn = screen.getByLabelText(/pokémon favoritado/i);
-    expect(addToFavBtn).toBeInTheDocument();
+    const addToFavBox = screen.getByRole('checkbox', {
+      name: /pokémon favoritado/i,
+    });
+    expect(addToFavBox).toBeInTheDocument();
 
-    userEvent.click(addToFavBtn);
+    userEvent.click(addToFavBox);
 
     const favPkmn = screen.getByAltText(/pikachu is marked as favorite/i);
     expect(favPkmn).toBeInTheDocument();

@@ -25,9 +25,11 @@ describe('Favorite pokémons page content', () => {
     expect(detailsLink).toBeInTheDocument();
     userEvent.click(detailsLink);
 
-    const addToFavBtn = screen.getByLabelText(/pokémon favoritado/i);
-    expect(addToFavBtn).toBeInTheDocument();
-    userEvent.click(addToFavBtn);
+    const addToFavBox = screen.getByRole('checkbox', {
+      name: /pokémon favoritado/i,
+    });
+    expect(addToFavBox).toBeInTheDocument();
+    userEvent.click(addToFavBox);
 
     const goToFavsLink = screen.getByRole('link', {
       name: /favorite pokémons/i,
