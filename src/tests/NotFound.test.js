@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 import renderWithRouter from './helpers/renderWithRouter';
 import App from '../App';
 
-describe('Checking not found page content', () => {
+describe('Not found page content', () => {
   it('Expects to render "Page requested not found" message', () => {
     const { history } = renderWithRouter(<App />);
     history.push('./aaaaa');

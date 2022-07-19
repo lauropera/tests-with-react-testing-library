@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from './helpers/renderWithRouter';
 import App from '../App';
 
-describe('Checking App navbar', () => {
+describe('Checking App navbar content', () => {
   it('Expects to exist a "Home" link', () => {
     renderWithRouter(<App />);
     const homeLink = screen.getByRole('link', { name: 'Home' });

@@ -1,29 +1,43 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import renderWithRouter from './helpers/renderWithRouter';
-import FavoritePokemons from '../pages/FavoritePokemons';
-import data from '../data';
+import App from '../App';
 
-describe('Checking the fav pokémons page content', () => {
+describe('Favorite pokémons page content', () => {
+  beforeEach(() => renderWithRouter(<App />));
+
   it('Expects to render "No favorite pokemon found" when has 0 favorites', () => {
-    render(<FavoritePokemons pokemons={ [] } />);
+    const goToFavsLink = screen.getByRole('link', {
+      name: /favorite pokémons/i,
+    });
+    expect(goToFavsLink).toBeInTheDocument();
+    userEvent.click(goToFavsLink);
 
     const noFavText = screen.getByText('No favorite pokemon found');
     expect(noFavText).toBeInTheDocument();
   });
 
   it('Expects to show a favorite pokémon', () => {
-    const PKMN = [data[0]];
-    renderWithRouter(<FavoritePokemons pokemons={ PKMN } />);
+    const detailsLink = screen.getByRole('link', {
+      name: /more details/i,
+    });
+    expect(detailsLink).toBeInTheDocument();
+    userEvent.click(detailsLink);
+
+    const addToFavBtn = screen.getByLabelText(/pokémon favoritado/i);
+    expect(addToFavBtn).toBeInTheDocument();
+    userEvent.click(addToFavBtn);
+
+    const goToFavsLink = screen.getByRole('link', {
+      name: /favorite pokémons/i,
+    });
+    expect(goToFavsLink).toBeInTheDocument();
+    userEvent.click(goToFavsLink);
 
     const pkmnName = screen.getByTestId('pokemon-name');
-    const pkmnType = screen.getByTestId('pokemon-type');
-    const pkmnWeight = screen.getByTestId('pokemon-weight');
-    const pkmnImage = screen.getByAltText(/pikachu sprite/i);
 
     expect(pkmnName).toBeInTheDocument();
-    expect(pkmnType).toBeInTheDocument();
-    expect(pkmnWeight).toBeInTheDocument();
-    expect(pkmnImage).toBeInTheDocument();
+    expect(pkmnName).toHaveTextContent(/pikachu/i);
   });
 });
