@@ -64,10 +64,10 @@ describe('Type filter buttons', () => {
   beforeEach(() => renderWithRouter(<App />));
 
   it('Expects to have a type button for each pokemon type', () => {
-    const allTypeBtns = screen.getAllByTestId('pokemon-type-button');
-    types.forEach((type, index) => {
-      expect(allTypeBtns[index]).toBeInTheDocument();
-      expect(allTypeBtns[index].textContent).toBe(type);
+    types.forEach((type) => {
+      const btn = screen.getByRole('button', { name: type });
+      expect(btn).toBeInTheDocument();
+      expect(btn).toHaveAttribute('data-testid', 'pokemon-type-button');
     });
   });
 
