@@ -1,13 +1,10 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
-import renderWithRouter from './helpers/renderWithRouter';
-import App from '../App';
+import { render, screen } from '@testing-library/react';
+import { NotFound } from '../pages';
 
 describe('Not found page content', () => {
+  beforeEach(() => render(<NotFound />));
   it('Expects to render "Page requested not found" message', () => {
-    const { history } = renderWithRouter(<App />);
-    history.push('./aaaaa');
-
     const alertMsg = screen.getByRole('heading', {
       name: /page requested not found/i,
     });
@@ -15,9 +12,6 @@ describe('Not found page content', () => {
   });
 
   it('Expects to show a pikachu image', () => {
-    const { history } = renderWithRouter(<App />);
-    history.push('/aaaaa');
-
     const image = screen.getByAltText(/pikachu crying/i);
     const URL = 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif';
 

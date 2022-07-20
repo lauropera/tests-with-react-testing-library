@@ -5,9 +5,8 @@ import renderWithRouter from './helpers/renderWithRouter';
 import App from '../App';
 
 describe('Favorite pokémons page content', () => {
-  beforeEach(() => renderWithRouter(<App />));
-
   it('Expects to render "No favorite pokemon found" when has 0 favorites', () => {
+    renderWithRouter(<App />);
     const goToFavsLink = screen.getByRole('link', {
       name: /favorite pokémons/i,
     });
@@ -19,6 +18,7 @@ describe('Favorite pokémons page content', () => {
   });
 
   it('Expects to show a favorite pokémon', () => {
+    renderWithRouter(<App />);
     const detailsLink = screen.getByRole('link', {
       name: /more details/i,
     });
@@ -41,5 +41,35 @@ describe('Favorite pokémons page content', () => {
 
     expect(pkmnName).toBeInTheDocument();
     expect(pkmnName).toHaveTextContent(/pikachu/i);
+  });
+
+  it('Expects to remove a favorite pokémon', () => {
+    const { history } = renderWithRouter(<App />);
+    history.push('/favorites');
+
+    const pkmnName = screen.queryByTestId('pokemon-name');
+
+    expect(pkmnName).toBeInTheDocument();
+    expect(pkmnName).toHaveTextContent(/pikachu/i);
+
+    const detailsLink = screen.getByRole('link', {
+      name: /more details/i,
+    });
+    expect(detailsLink).toBeInTheDocument();
+    userEvent.click(detailsLink);
+
+    const addToFavBox = screen.getByRole('checkbox', {
+      name: /pokémon favoritado/i,
+    });
+    expect(addToFavBox).toBeInTheDocument();
+    userEvent.click(addToFavBox);
+
+    const goToFavsLink = screen.getByRole('link', {
+      name: /favorite pokémons/i,
+    });
+    expect(goToFavsLink).toBeInTheDocument();
+    userEvent.click(goToFavsLink);
+
+    expect(pkmnName).not.toBeInTheDocument();
   });
 });
