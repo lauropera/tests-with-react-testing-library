@@ -81,7 +81,7 @@ describe('Type filter buttons', () => {
     const pkmnType = screen.getByTestId('pokemon-type').textContent;
 
     expect(getPkmnName()).toBe('Alakazam');
-    expect(psychicBtn.textContent).toBe(pkmnType);
+    expect(psychicBtn).toHaveTextContent(pkmnType);
   });
 
   it('Expects the "All" button is always visible', () => {

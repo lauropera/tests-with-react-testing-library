@@ -9,19 +9,19 @@ describe('Pokemon card render', () => {
   it('Checks if the name is rendered', () => {
     const pkmnName = screen.getByTestId('pokemon-name');
     expect(pkmnName).toBeInTheDocument();
-    expect(pkmnName.textContent).toBe('Pikachu');
+    expect(pkmnName).toHaveTextContent('Pikachu');
   });
 
   it('Checks if the type is rendered', () => {
     const pkmnType = screen.getByTestId('pokemon-type');
     expect(pkmnType).toBeInTheDocument();
-    expect(pkmnType.textContent).toBe('Electric');
+    expect(pkmnType).toHaveTextContent('Electric');
   });
 
   it('Checks if the weight is rendered', () => {
     const pkmnWeight = screen.getByTestId('pokemon-weight');
     expect(pkmnWeight).toBeInTheDocument();
-    expect(pkmnWeight.textContent).toBe('Average weight: 6.0 kg');
+    expect(pkmnWeight).toHaveTextContent('Average weight: 6.0 kg');
   });
 
   it('Checks if the image is rendered', () => {
