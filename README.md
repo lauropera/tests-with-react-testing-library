@@ -1,16 +1,44 @@
-# 🚧 README em construção 🚧
+# :space_invader: Testes com React Testing Library
 
-<!-- Olá, Tryber!
+## :satellite: Desenvolvimento
 
-Esse é apenas um arquivo inicial para o README do seu projeto.
+Projeto desenvolvido na <a href="https://betrybe.com/" target="_blank">Trybe</a> durante o módulo de Front-End!
 
-É essencial que você preencha esse documento por conta própria, ok?
+Nesse projeto praticamos testes com a biblioteca de testes do React, a React Testing Library.
 
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
+## :hammer_and_wrench: Tecnologias
 
-⚠️ IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
+* React.js
+* React Testing Library (RTL)
+* Jest.js
+* Stryker Mutator
 
--->
+## :desktop_computer: Instalação e execução
+
+### 1 - Clone esse repositório
+```sh
+git clone git@github.com:lauropera/tests-with-react-testing-library.git
+```
+### 2 - Instale as dependências e execute a aplicação
+
+Instalando as dependências:
+```sh
+npm install
+```
+
+Executando a aplicação:
+```sh
+npm start
+```
+
+### 3 - Conferindo a cobertura de testes
+```sh
+npm run test-coverage
+```
+
+# :camera: Screenshots
+
+![PC Screenshot](./imgs/Preview-Coverage.png)
+
+## :heavy_check_mark: Nota
+![Minha nota no projeto](./imgs/nota-projeto.png)
