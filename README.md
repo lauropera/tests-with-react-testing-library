@@ -8,6 +8,8 @@ Projeto desenvolvido na <a href="https://betrybe.com/" target="_blank">Trybe</a>
 
 Nesse projeto praticamos testes com a biblioteca de testes do React, a React Testing Library.
 
+<br />
+
 ## ⚙️ Tecnologias
 
 * React.js
