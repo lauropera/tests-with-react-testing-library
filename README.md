@@ -1,4 +1,4 @@
-# :space_invader: Testes com React Testing Library
+# 👾 Testes com React Testing Library
 
 <br />
 
